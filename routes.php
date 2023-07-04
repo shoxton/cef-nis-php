@@ -2,5 +2,7 @@
 
 
 return [
-    '/cadastro' => 'controllers/register.php'
+    '/' => 'controllers/home.php',
+    '/cadastro' => 'controllers/register.php',
+    '/consulta' => 'controllers/query.php'
 ];
