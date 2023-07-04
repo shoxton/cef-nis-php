@@ -12,14 +12,15 @@ class JsonFileDriver implements PersistenceContract
         file_put_contents('data/json_db.json', $encodedData, LOCK_EX);
     }
 
-    public function findById($id)
+    public function findBy(string $key, $value)
     {
+        $data = $this->fetchAll();
 
-    }
+        $filtered = array_filter($data, function ($item) use ($key, $value) {
+            return isset($item[$key]) && $item[$key] === $value;
+        });
 
-    public function findBy(string $key)
-    {
-
+        return array_shift($filtered);
     }
 
     public function fetchAll()
